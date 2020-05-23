@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>器材</title>
+  <!-- 页面重置样式 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <!-- layui.css -->
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+  <!-- 公用样式 -->
+  <link rel="stylesheet" href="../css/common.css">
+  <!-- equipment -->
+  <link rel="stylesheet" href="../css/equipment.css">
+
+</head>
+
+<body>
+  <div class="main_box">
+    <!-- 头部 -->
+    <header class="header_box">
+      <div class="head_content  common_content">
+        <img class="head_img" src="../sources/imgs/logo.png" alt="">
+      </div>
+    </header>
+    <nav class="menus_box">
+      <div class="menus_content  common_content">
+        <ul class="clearfix" id="nav_wrap">
+          <li class="nav_item"><a href="../index.html">首页</a></li>
+          <li class="nav_item"><a href="./news.html">新闻公告</a></li>
+          <li class="nav_item"><a href="#">体育器材</a></li>
+          <li class="nav_item"><a href="./place.html">体育场地</a></li>
+        </ul>
+        <div class="ts-wrap">
+          <span class="login_btn" id="login_btn" style="display: none;"> 登录 </span>
+          <div class="user_box " id="user_box" style="display: none;">
+            <div>
+              <img src="http://t.cn/RCzsdCq" width="40" style="border-radius: 20px;" alt="">
+              <span class="username"></span>
+            </div>
+            <ul class="user_box_list">
+              <li class="user_box_item" id="userOrder">我的预约</li>
+              <li class="user_box_item" id="userZujie">我的租借</li>
+              <li class="user_box_item" id="userout">推出登录</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!--  -->
+  <div class="equipment_box">
+    <div class="equipment_menus">
+      <ul class="layui-nav layui-nav-tree  reset-bg  " lay-filter="test" id="eq_menus">
+      </ul>
+
+    </div>
+    <div class="equipment_content_wrap">
+      <h2 class="til"><span>篮球</span></h2>
+
+      <!--  信息面板 -->
+      <div class="layui-card reset-card-sty">
+        <div class="layui-card-header">器材信息</div>
+        <div class="layui-card-body" style="overflow: hidden;">
+          <ul>
+            <li>器材类别：<span class="eq_card_name">篮球</span></li>
+            <li>器材数量：<span class="eq_card_counts">100</span></li>
+            
+          </ul>
+          <button type="button" class="layui-btn layui-btn-normal  layui-btn-sm rent-btn "  id="rent_btn">租借</button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+  <!--  租借表单 -->
+  <form class="layui-form" id="rent-form-box" style="display: none;">
+    <div class="layui-form-item">
+      <label class="layui-form-label">租借类型</label>
+      <div class="layui-input-inline">
+          <input type="text" name="equip_name" autocomplete="off" class="rent_name_input layui-input"  value=""> 
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">租借数量</label>
+      <div class="layui-input-inline">
+        <input type="number" name="equip_num" placeholder="请输入租借数量" autocomplete="off" class="layui-input" lay-verify="required |number"  value="1"> 
+      </div>
+    </div>
+
+    <!-- <div class="layui-form-item">
+      <label class="layui-form-label">租借时间</label>
+      <div class="layui-input-inline">
+        <input type="date" name="rentTime" placeholder="租借时间" autocomplete="off" class="layui-input" lay-verify="required" > 
+      </div>
+    </div> -->
+    
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="rent">立即提交</button>
+        <button  class="layui-btn layui-btn-primary">取消</button>
+      </div>
+    </div>
+    
+  </form>
+
+  
+
+
+
+
+  <!-- footer -->
+  <i style="display: block; height: 60px;"></i>
+  <div class="footer_box ">
+    <div class="common_content footer_content">
+      <p>地址：河南省平顶山市新城区未来路南段 邮政编码：467000</p>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!-- layui.js -->
+  <script src="../lib/layui/layui.all.js"></script>
+  <!-- 公用js -->
+  <script src="../js/common.js"></script>
+  <!-- equipment.js -->
+  <script src="../js/equipment.js"></script>
+
+  <script src="../js/tools.js"></script>
+
+
+  <script>
+
+
+ 
+
+    // 根据菜单下标渲染页面
+var renderContentByIndex =  function(index){
+  common.activeMenuItem('eq_menus', index , 'layui-nav-itemed')
+  $('.equipment_content_wrap >.til> span').text(qicai_list[index].name);
+  // 修改对应器材信息
+  $(".eq_card_name").text(qicai_list[index].name)
+  $(".eq_card_counts").text(qicai_list[index].num)
+
+  
+}
+
+
+// 默认激活第一个菜单
+var activeIndex = 0 ; 
+
+
+
+
+    var qicai_list = []
+      $.ajax({
+        url: My_tools.Home_url + "GetEquip" , 
+        success: function (res) {
+          qicai_list = JSON.parse(res)
+          console.log(qicai_list)
+          var xxx = ""
+          if (i == 0) {
+            xxx = `layui-nav-itemed`
+          }
+
+          var tmp_side = ``
+          var tmp_str = ''
+          
+
+          for (var i = 0; i < qicai_list.length; i++) {
+            tmp_side += `<li class="layui-nav-item ` + xxx + ` "><a href="javascript:;">` + qicai_list[i].name + `</a></li>`
+          }
+          $(".layui-nav-bar").remove()
+          $(".layui-nav").html(tmp_side)
+
+          renderContentByIndex(0);
+
+
+
+          //器材管理菜单点击事件
+          $(".layui-nav-item").click(function(event){
+
+            var nodeName = event.target.nodeName;
+            if(nodeName === "A"){
+              var index = $(event.target).parent().index();
+              console.log(index)
+              activeIndex = index;
+              renderContentByIndex(index);
+
+            }
+          })
+
+
+        }
+      })
+
+
+  </script>
+</body>
+
+</html>

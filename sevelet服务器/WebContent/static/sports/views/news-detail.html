@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>新闻</title>
+  <!-- 页面重置样式 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <!-- layui.css -->
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="../css/common.css">
+    <!-- 新闻页面样式 -->
+  <link rel="stylesheet" href="../css/news.css">
+
+</head>
+
+<body>
+  <div class="news_box">
+    <!-- 头部 -->
+    <header class="header_box">
+      <div class="head_content  common_content">
+        <img class="head_img" src="../sources/imgs/logo.png" alt="">
+      </div>
+    </header>
+    <nav class="menus_box">
+      <div class="menus_content  common_content">
+        <ul class="clearfix" id="nav_wrap">
+          <li class="nav_item"><a href="../index.html">首页</a></li>
+          <li class="nav_item"><a href="#">新闻公告</a></li>
+          <li class="nav_item"><a href="./equipment.html">体育器材</a></li>
+          <li class="nav_item"><a href="./place.html">体育场地</a></li>
+        </ul>
+
+        <div class="ts-wrap">
+          <span class="login_btn" id="login_btn" style="display: none;"> 登录 </span>
+          <div class="user_box " id="user_box" style="display: none;">
+            <div>
+              <img src="http://t.cn/RCzsdCq" width="40" style="border-radius: 20px;" alt="">
+              <span class="username"></span>
+            </div>
+            <ul class="user_box_list">
+              <li class="user_box_item" id="userOrder">我的预约</li>
+              <li class="user_box_item" id="userZujie">我的租借</li>
+              <li class="user_box_item" id="userout">推出登录</li>
+            </ul>
+
+          </div>
+
+        </div>
+        
+      </div>
+    </nav>
+  </div>
+
+  <!-- 内容  -->
+  <div class="news_top" >
+    <div class="news_location">
+      <p class="news_location_txt">当前位置 首页 -> 新闻公告 -> 正文</p>
+    </div>
+    <div class="news_content" id="news_content">
+      <h2>“停课不停教、停课不停学</h2>
+      <p>
+        “停课不停教、停课不停学”，制定建课方案，构建章节模块，组建课程团队，探索教学模式，……新冠肺炎疫情发生以来,就业创业指导教研室主任李培斌，立足岗位、尽职尽责，全力做好就业创业网络课程建设工作，确保疫情防控期间创新创业教育教学不断线，教学质量不降低。
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <!-- footer -->
+  <i style="display: block; height: 60px;"></i>
+  <div class="footer_box ">
+    <div class="common_content footer_content">
+      <p>地址：河南省平顶山市新城区未来路南段   邮政编码：467000</p>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!-- layui.js -->
+  <script src="../lib/layui/layui.all.js"></script>
+  <!-- 公用js -->
+  <script src="../js/common.js"></script>
+  <!-- 新闻js -->
+  <script src="../js/news.js"></script>
+
+  <script src="../js/tools.js"></script>
+
+  
+  <script>
+
+    var detail_ = location.href.split("?id=")[1]
+
+	console.log("开始获取新闻详情")
+    $.ajax({
+    	dataType: "text",
+      url: My_tools.Home_url + "static/" + detail_ , 
+      success: function (res) {
+    	  console.log("开始打印新闻详情")
+        console.log(res)
+        $("#news_content").empty().append(res)
+      }
+    })
+
+
+
+  </script>
+</body>
+
+</html>

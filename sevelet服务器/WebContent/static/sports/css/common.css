@@ -1,0 +1,231 @@
+/* 通用样式 */
+body{
+  font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+  color: #000;
+  font-size: 14px;
+  background: #fff;
+  min-width: 1200px;
+  overflow: auto!important;
+}
+.common_content{
+  width: 1200px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+}
+.set_txt_one_line{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/*  header  */
+
+.header_box{
+  width: 100%;
+  height: 120px;
+  background: #014899;
+  overflow: hidden;
+}
+.head_img{
+ width: 393px;
+ height: auto; 
+ margin-top: 10px;
+}
+/* nav */
+.menus_box{
+  position: relative;
+  width: 100%;
+  background: #4070ba;
+  
+}
+.menus_content{
+  /* overflow: auto; */
+  height: 55px;
+}
+
+.ts-wrap{
+  float: right;
+  padding: 7px 10px;
+
+}
+.ts_wrap >span{
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+}
+
+#nav_wrap{
+  float: left;
+}
+
+.menus_content .nav_item{
+  float: left;
+}
+.menus_content .nav_item:hover{
+  background-color: #fff;
+}
+
+.menus_content .nav_item:hover > a{
+  color: #4070ba ;
+}
+
+.menus_content .nav_item >a{
+    display: block;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: block;
+    font-size: 16px;
+    height: 55px;
+    line-height: 55px;
+    color: #fff;
+    padding: 0 23px;
+}
+
+.nav_item_active{
+  background-color: #fff;
+}
+.nav_item_active>a{
+  color: #4070ba !important;
+}
+
+
+/*  header end */
+
+
+
+/* 页脚 */
+.footer_box{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  clear: both;
+  background-color: #014899;
+
+}
+
+.footer_content{
+  font-size: 14px;
+  color: #fff;
+  line-height: 28px;
+  text-align: center;
+  padding: 15px 0;
+}
+/*  页脚 end  */
+
+
+/*   器材和场地公用样式  */
+.place_box,.equipment_box{
+  width: 1200px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+.place_box > div ,.equipment_box >  div{
+  float: left;
+}
+
+.equipment_menus,.place_menus{
+  margin-right: 20px;
+}
+
+
+.reset-bg{
+  background-color: #4070ba!important;
+}
+
+.place_menus  .layui-nav-itemed >a  , .equipment_menus  .layui-nav-itemed >a {
+ background-color: #f2f2f2!important;
+ color: #000!important;
+}
+
+
+.place_menus  .layui-nav-item > a , .equipment_menus  .layui-nav-item > a{
+ color: #fff;
+}
+
+.place_menus  .layui-nav-item > a:hover , .equipment_menus  .layui-nav-item > a:hover{
+  background-color: #f2f2f2!important;
+  color: #000;
+ }
+
+.place_content_wrap , .equipment_content_wrap{
+  width: 980px;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+
+}
+
+
+.order_til,  .place_content_wrap  > .til, .equipment_content_wrap > .til{
+  color: #014999;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 5px;
+    margin-bottom: 15px;
+}
+
+ .order_til > span ,.place_content_wrap  > .til >span , .equipment_content_wrap >.til > span{
+ display: inline-block;
+ padding-bottom: 5px;
+ border-bottom: 2px solid #014999;
+
+}
+/*   器材和场地公用样式  end  */
+
+.login_btn{
+  display: inline-block;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+}
+.login_box, .reg_box{
+  width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+.login_box .til, .reg_box .til{
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin: 20px auto;
+  font-weight: bolder;
+}
+
+.ts-wrap  .user_box{
+  display: inline-block;
+  position: relative;
+  height: 55px;
+}
+
+.user_box:hover .user_box_list {
+  display: block;
+}
+
+.user_box_list{
+  position: absolute;
+  top: 50px;
+  left: -15px;
+  width: 100px;
+  background-color: #f2f2f2;
+  display: none;
+  z-index: 1000;
+}
+
+.user_box_item{
+  font-size: 14px;
+  color: #333;
+  line-height: 2.5;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.user_box_item:hover{
+  background-color: rgba(0,0,0,.1) ;
+}
+
+
+

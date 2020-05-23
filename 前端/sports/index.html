@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>预约管理系统</title>
+  <!-- 页面重置样式 -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <!-- layui.css -->
+  <link rel="stylesheet" href="./lib/layui/css/layui.css">
+  <!-- 公用样式 -->
+  <link rel="stylesheet" href="./css/common.css">
+  <!--  首页样式 -->
+  <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+  <div class="main_box">
+    <!-- 头部 -->
+    <header class="header_box">
+      <div class="head_content  common_content">
+        <img class="head_img" src="./sources/imgs/logo.png" alt="">
+      </div>
+    </header>
+    <nav class="menus_box">
+      <div class="menus_content  common_content">
+        <ul class="clearfix"  id="nav_wrap">
+          <li class="nav_item"><a href="#">首页</a></li>
+          <li class="nav_item"><a href="./views/news.html">新闻公告</a></li>
+          <li class="nav_item"><a href="./views/equipment.html">体育器材</a></li>
+          <li class="nav_item"><a href="./views/place.html">体育场地</a></li>
+        </ul>
+        <div class="ts-wrap">
+          <span class="login_btn" id="login_btn" style="display: none;"> 登录 </span>
+          <div class="user_box " id="user_box" style="display: none;">
+            <div>
+              <img src="http://t.cn/RCzsdCq" width="40" style="border-radius: 20px;" alt="">
+              <span class="username"></span>
+            </div>
+            <ul class="user_box_list">
+              <li class="user_box_item" id="userOrder">我的预约</li>
+              <li class="user_box_item" id="userZujie">我的租借</li>
+              <li class="user_box_item" id="userout">推出登录</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- 轮播图  -->
+  <div class="lunbo_box ">
+    <div class="lunbo_content  common_content ">
+
+      <div class="layui-carousel" id="test1">
+        <div carousel-item>
+          <div>
+            <img src="./sources/imgs/lunbo1.jpg" alt="lunbo1">
+          </div>
+          <div>
+            <img src="./sources/imgs/lunbo2.jpg" alt="lunbo2">
+          </div>
+          <div>
+            <img src="./sources/imgs/lunbo3.jpg" alt="lunbo3">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 新闻公告 -->
+  <div class="news_box">
+    <div class="common_content news_content">
+      <h2 class="title_h2"><span>新闻</span>  <span>公告</span></h2>
+      <div class="news_list">
+      
+        
+        
+        
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- 场地管理 -->
+  <div class="places_box">
+    <div class="common_content place_content">
+      <h2 class="title_h2"><span>场地</span>  <span></span></h2>
+      <ul class="place_list">
+        
+        
+      
+      </ul>
+    </div>
+  </div>
+
+  <!-- 器材管理 -->
+  <div class="equipments_box">
+    <div class="common_content equipment_content">
+      <h2 class="title_h2"><span>器材</span>  <span></span></h2>
+      <ul class="place_list qicai_list">
+        
+      
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- footer -->
+  <i style="display: block; height: 60px;"></i>
+  <div class="footer_box ">
+    <div class="common_content footer_content">
+      <p>地址：河南省平顶山市新城区未来路南段   邮政编码：467000</p>
+    </div>
+  </div>
+
+
+  
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!-- layui.js -->
+  <script src="./lib/layui/layui.all.js"></script>
+    <!-- 公用js -->
+    <script src="./js/tools.js"></script>
+    <script src="./js/common.js"></script>
+  <!-- 首页js -->
+  <script src="./js/index.js"></script>
+  
+  <script>
+
+
+
+      var qicai_list = []
+      $.ajax({
+        url: My_tools.Home_url + "GetEquip" , 
+        success: function (res) {
+          area_list = JSON.parse(res)
+
+          console.log(area_list)
+
+
+          var tmp_str = ''
+          for (var i = 0; i < area_list.length; i++) {
+            if (i < 3) {
+              tmp_str += `<li class="place_item">
+                  <p class="place_item_txt set_txt_one_line">` + area_list[i].name + `</p>
+                      <p class="place_item_txt set_txt_one_line">` + area_list[i].num + `</p>
+                    </li>`
+            }
+          }
+          $(".qicai_list").append($(tmp_str))
+        }
+      })
+
+
+
+
+
+
+    var area_list = []
+    $.ajax({
+      url: My_tools.Home_url + "GetArea" , 
+      success: function (res) {
+        area_list = JSON.parse(res)
+
+        console.log("我是场地信息")
+        console.log(area_list)
+
+
+
+        var tmp_str = ''
+        for (var i = 0; i < area_list.length; i++) {
+          if (i < 3) {
+            tmp_str += `<li class="place_item">
+                    <img src="` + My_tools.Home_url + `static/` + area_list[i].img + `" alt="">
+                    <p class="place_item_txt set_txt_one_line">` + area_list[i].title + `</p>
+                  </li>`
+          }
+        }
+        $(".place_list").eq(0).append($(tmp_str))
+      }
+    })
+
+
+
+
+
+    function change_arr(a) {
+      var big_arr = []
+      var tmp = []
+      for (var i = 0; i < a.length; i++) {
+        if (tmp.length == 3) {
+          big_arr.push(tmp)
+          tmp = []
+        }
+
+        tmp.push(a[i])
+
+        if (i == a.length - 1) {
+          big_arr.push(tmp)
+        }
+      }
+
+      return big_arr
+    }
+
+
+    var news_list = []
+    $.ajax({
+      url: My_tools.Home_url + "GetNews" , 
+      success: function (res) {
+        var tmp_news_list = JSON.parse(res)
+        news_list = change_arr(tmp_news_list)
+
+        
+        var tmp_str = ''
+        for (var i = 0; i < news_list.length; i++) {
+          var min_arr = news_list[i]
+          tmp_str += `<div class="news_item">
+              <img src="./sources/imgs/news1.jpg" alt="">
+                <ul>`
+
+          for (var j = 0; j < news_list[i].length; j++) {
+            tmp_str += `<li class="news_item_txt"><a class="set_txt_one_line" href="#">` + news_list[i][j].title + `</a></li>`
+          }
+          tmp_str += `</ul></div>`
+        }
+        $(".news_list").append($(tmp_str))
+      }
+    })
+
+
+
+  </script>
+</body>
+
+</html>

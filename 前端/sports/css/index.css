@@ -1,0 +1,107 @@
+
+
+
+.lunbo_box{
+  width: 100%;
+  background-color: #f1f1f1 ;
+  padding-top: 10px;
+}
+
+
+/*  新闻公告 */
+.news_box{
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+
+}
+.news_content{
+  padding: 10px 0;
+ 
+}
+.title_h2{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    overflow: hidden;
+  
+}
+ .title_h2 > span:first-child{
+  float: left;
+  padding-bottom: 5px;
+  border-bottom: 4px solid #014899;
+}
+
+.news_list{
+  overflow: hidden;
+}
+
+.news_item{
+  float: left;
+  width: 370px;
+  margin-right: 44px;
+  box-sizing: border-box;
+}
+.news_list > .news_item:last-child{
+  margin-right: 0;
+}
+
+.news_item > img{
+  width:370px;
+  height: auto; 
+  margin-bottom: 10px;
+}
+
+
+.news_item_txt >a{
+  display: inline-block;
+  font-size: 14px;
+  line-height: 2;
+  color: #000;
+  width: 370px;
+  text-align: left;
+  
+  
+}
+.news_item_txt >a:hover{
+  color: #4070ba;
+}
+
+/* 场地管理 */
+.places_box{
+  width: 100%;
+  background-color: #f1f1f1;
+}
+.place_content{
+  padding: 10px 0;
+}
+.place_list{
+  overflow: hidden;
+}
+.place_item{
+  float: left;
+  margin-right: 44px;
+}
+.place_list > .place_item:last-child{
+  margin-right: 0;
+}
+.place_item > img{
+  width: 370px ;
+}
+.place_item_txt{
+  width: 370px ;
+  font-size: 12px;
+  color: #000;
+  text-align: center;
+  line-height: 2;
+}
+
+/* 器材管理 */
+.equipments_box{
+  width: 100%;
+  background-color: #fff;
+}
+.equipment_content{
+  padding: 10px 0;
+
+}

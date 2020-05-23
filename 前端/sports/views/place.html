@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>场地</title>
+  <!-- 页面重置样式 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <!-- layui.css -->
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+  <!-- 公用样式 -->
+  <link rel="stylesheet" href="../css/common.css">
+  <!-- 场地 -->
+  <link rel="stylesheet" href="../css/place.css">
+
+</head>
+
+<body>
+  <div class="main_box">
+    <!-- 头部 -->
+    <header class="header_box">
+      <div class="head_content  common_content">
+        <img class="head_img" src="../sources/imgs/logo.png" alt="">
+      </div>
+    </header>
+    <nav class="menus_box">
+      <div class="menus_content  common_content">
+        <ul class="clearfix" id="nav_wrap">
+          <li class="nav_item"><a href="../index.html">首页</a></li>
+          <li class="nav_item"><a href="./news.html">新闻公告</a></li>
+          <li class="nav_item"><a href="./equipment.html">体育器材</a></li>
+          <li class="nav_item"><a href="#">体育场地</a></li>
+        </ul>
+        <div class="ts-wrap">
+          <span class="login_btn" id="login_btn" style="display: none;"> 登录 </span>
+          <div class="user_box " id="user_box" style="display: none;">
+            <div>
+              <img src="http://t.cn/RCzsdCq" width="40" style="border-radius: 20px;" alt="">
+              <span class="username"></span>
+            </div>
+            <ul class="user_box_list">
+              <li class="user_box_item" id="userOrder">我的预约</li>
+              <li class="user_box_item" id="userZujie">我的租借</li>
+              <li class="user_box_item" id="userout">推出登录</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <!--  场地 -->
+  <div class="place_box">
+    <div class="place_menus">
+      <ul class="layui-nav layui-nav-tree  reset-bg  " lay-filter="test" id="place_menus">
+        <!-- <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;"> 篮球场地</a></li>
+        <li class="layui-nav-item  "><a href="javascript:;">羽毛球场地</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">乒乓球场地</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">网球场地</a></li> -->
+      </ul>
+
+    </div>
+    <div class="place_content_wrap">
+      <h2 class="til"><span>篮球场地</span></h2>
+      <!--  场地图片 -->
+      <div class="place_imgs"></div>
+      <!-- 预约 -->
+      <div class="order_wrap">
+        <h2 class="order_til"><span>预约</span></h2>
+        <div class="order_box">
+          <p class="order_rule">预约规则：每天8:00 - 18:00接受预约，仅限当天预约。</p>
+
+          <div class="layui-btn-container" id="order">
+            <button type="button" class="layui-btn  layui-btn-sm  layui-btn-normal" data-index="0">8:00-9:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="1">9:00-10:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="2">10:00-11:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="3" >11:00-12:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="4">12:00-13:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="5" >13:00-14:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="6" >14:00-15:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="7" >15:00-16:00</button>
+            <button type="button" class="layui-btn   layui-btn-sm  layui-btn-normal" data-index="8">16:00-17:00</button>
+            <button type="button"
+              class="layui-btn   layui-btn-sm  layui-btn-normal layui-btn-disabled" data-index="9">17:00-18:00</button>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+<!-- 
+  <form class="layui-form   reg_box" action="" > 
+    <h2 class="til">注册</h2>
+    <div class="layui-form-item">
+      <label class="layui-form-label">账号</label>
+      <div class="layui-input-inline">
+        <input type="text" name="title" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">密码框</label>
+      <div class="layui-input-inline">
+        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">性别</label>
+      <div class="layui-input-block">
+        <input type="radio" name="sex" value="男" title="男">
+        <input type="radio" name="sex" value="女" title="女" checked>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">出生日期</label>
+      <div class="layui-input-inline">
+        <input type="date" name="birthday" required  lay-verify="required" placeholder="请输入出生日期" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">电话</label>
+      <div class="layui-input-inline">
+        <input type="text" name="phone"   required lay-verify="required\phone" placeholder="请输入电话" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">下拉选择框</label>
+      <div class="layui-input-block">
+        <select name="interest" lay-filter="aihao">
+          <option value="0">写作</option>
+          <option value="1">阅读</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block" style="margin: 20px 40px;">
+        <button style="width:100%;" class="layui-btn layui-btn-normal  layui-btn-lg" lay-submit lay-filter="reg">注册</button>
+      </div>
+    </div>
+  </form> -->
+
+  
+
+  
+
+
+  <!-- footer -->
+  <i style="display: block; height: 60px;"></i>
+  <div class="footer_box ">
+    <div class="common_content footer_content">
+      <p>地址：河南省平顶山市新城区未来路南段 邮政编码：467000</p>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!-- layui.js -->
+  <script src="../lib/layui/layui.all.js"></script>
+  <!-- 公用js -->
+  <script src="../js/common.js"></script>
+  <!-- place  -->
+  
+
+
+  <script src="../js/tools.js"></script>
+
+  <script src="../js/place.js"></script>
+
+
+  <script>
+
+
+
+    
+
+
+  </script>
+</body>
+
+</html>

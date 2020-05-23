@@ -1,0 +1,58 @@
+.place_imgs{
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+}
+.place_item{
+  position: relative;
+  width: 242px;
+  text-align: center;
+  float: left;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+}
+
+.place_item_top{
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.place_item_top:hover >  .place_item_layer{
+  height: 100%;
+}
+
+.place_item_txt{
+  font-size: 14px;
+  color: #000;
+  line-height: 28px;
+  text-align: center;
+  font-weight: bolder;
+}
+.place_item_layer{
+  width: 200px;
+  position: absolute;
+  height: 0;
+  left: 20px;
+  background-color: rgba(0,0,0,.6);
+  z-index: 100;
+  transition: all .5;
+  overflow: hidden;
+
+}
+.place_item_layer > button{
+  margin-top: 50px;
+}
+
+
+.order_rule{
+  font-size: 12px;
+  color: #333;
+  line-height: 2;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.order_wrap{
+  display: none;
+}

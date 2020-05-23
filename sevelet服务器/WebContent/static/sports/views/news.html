@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>新闻</title>
+  <!-- 页面重置样式 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <!-- layui.css -->
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="../css/common.css">
+    <!-- 新闻页面样式 -->
+  <link rel="stylesheet" href="../css/news.css">
+</head>
+
+<body>
+  <div class="news_box">
+    <!-- 头部 -->
+    <header class="header_box">
+      <div class="head_content  common_content">
+        <img class="head_img" src="../sources/imgs/logo.png" alt="">
+      </div>
+    </header>
+    <nav class="menus_box">
+      <div class="menus_content  common_content">
+        <ul class="clearfix" id="nav_wrap">
+          <li class="nav_item"><a href="../index.html">首页</a></li>
+          <li class="nav_item"><a href="#">新闻公告</a></li>
+          <li class="nav_item"><a href="./equipment.html">体育器材</a></li>
+          <li class="nav_item"><a href="./place.html">体育场地</a></li>
+        </ul>
+        <div class="ts-wrap">
+          <span class="login_btn" id="login_btn" style="display: none;"> 登录 </span>
+          <div class="user_box " id="user_box" style="display: none;">
+            <div>
+              <img src="http://t.cn/RCzsdCq" width="40" style="border-radius: 20px;" alt="">
+              <span class="username"></span>
+            </div>
+            <ul class="user_box_list">
+              <li class="user_box_item" id="userOrder">我的预约</li>
+              <li class="user_box_item" id="userZujie">我的租借</li>
+              <li class="user_box_item" id="userout">推出登录</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 内容  -->
+  <div class="news_top">
+    <div class="news_left">
+      <img class="img" src="../sources/imgs/ny1.jpg" alt="">
+      <div class="news_location">
+        <p class="news_location_txt">当前位置 首页 -> 新闻公告</p>
+      </div>
+      <div class="news_list">
+        <ul>
+          
+          
+        </ul>
+      </div>
+    </div>
+    <div class="news_right">
+      <h2 class="news_right_tiltle"><span>图片新闻</span></h2>
+      <div class="news_r_box">
+        <div class="img_box">
+          <img width="234px" src="../sources/imgs/news2.jpg" alt="">
+
+        </div>
+        <p><a class="txt" href="#" title="">
+          “金鼠迎春•第五届中国陶瓷雕塑生肖主题系列展”在上海...
+              </a></p>
+      </div>
+    </div>
+
+
+    
+    
+ 
+
+  </div>
+
+
+
+
+
+
+  <!-- footer -->
+  <i style="display: block; height: 60px;"></i>
+  <div class="footer_box ">
+    <div class="common_content footer_content">
+      <p>地址：河南省平顶山市新城区未来路南段   邮政编码：467000</p>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!-- layui.js -->
+  <script src="../lib/layui/layui.all.js"></script>
+  <!-- 公用js -->
+  <script src="../js/common.js"></script>
+  <!-- 新闻js -->
+  <script src="../js/news.js"></script>
+
+
+  <script src="../js/tools.js"></script>
+  
+  <script>
+
+// common.isLogin()
+
+
+
+function change_arr(a) {
+      var big_arr = []
+      var tmp = []
+      for (var i = 0; i < a.length; i++) {
+        if (tmp.length == 3) {
+          big_arr.push(tmp)
+          tmp = []
+        }
+
+        tmp.push(a[i])
+
+        if (i == a.length - 1) {
+          big_arr.push(tmp)
+        }
+      }
+
+      return big_arr
+    }
+
+    
+
+
+    var news_list = []
+    $.ajax({
+      url: My_tools.Home_url + "GetNews" , 
+      success: function (res) {
+        news_list = JSON.parse(res)
+        
+        var tmp_str = ''
+        for (var i = 0; i < news_list.length; i++) {
+          tmp_str += `
+          <li class="news_item">
+            <a href="./news-detail.html?id=` + news_list[i].detail + `">` + news_list[i].title + `</a>
+            <span>` + news_list[i].news_time + `</span>
+          </li>
+          `
+        }
+        $(".news_list>ul").append($(tmp_str))
+      }
+    })
+
+  </script>
+</body>
+
+</html>
